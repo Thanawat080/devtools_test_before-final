@@ -6,6 +6,15 @@ pipeline {
                 checkout scm
             }
         }
+        stage('npm') {
+            steps {
+                sh '''
+                cd front-end
+                npm i
+                '''
+            }
+        }
+
         stage('deploy') {
             steps {
                 sh '''
