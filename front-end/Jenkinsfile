@@ -8,7 +8,9 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sh '''docker-compose -f devtools_test_before-final/docker-compose-build.yml build frontend
+                sh '''
+                docker login -u thanawat12 -p jamew000
+                docker-compose -f devtools_test_before-final/docker-compose-build.yml build frontend
                 docker-compose -f devtools_test_before-final/docker-compose-deploy.yml up -d frontend
                 '''
             }
